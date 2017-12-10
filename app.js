@@ -4,17 +4,26 @@ const fs = require('fs')
 const pug = require('pug')
 const fetch = require('./fetch')
 const config = require('./config')
-const { shouldOutputHtml, shouldOutputImages, htmlDir, imagesDir } = config
+const { shouldOutputHtml, shouldOutputImages,
+        outputDir, htmlDir, imageDir } = config
 const questionID = process.argv[2] ? process.argv[2] : config.questionID
 const questionUrl = `https://www.zhihu.com/question/${questionID}`
 var questionTitle
 
+if (!fs.existsSync(outputDir)) {
+  fs.mkdirSync(outputDir)
+}
 if (shouldOutputHtml && !fs.existsSync(htmlDir)) {
   fs.mkdirSync(htmlDir)
 }
-const specificImagesDir = `${imagesDir}/${questionID}`
-if (shouldOutputImages && !fs.existsSync(specificImagesDir)) {
-  fs.mkdirSync(specificImagesDir)
+const specificImagesDir = `${imageDir}/${questionID}`
+if (shouldOutputImages) {
+  if (!fs.existsSync(imageDir)) {
+    fs.mkdirSync(imageDir)
+  }
+  if (!fs.existsSync(specificImagesDir)) {
+    fs.mkdirSync(specificImagesDir)
+  }
 }
 
 fetch(questionUrl)

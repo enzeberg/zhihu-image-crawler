@@ -3,6 +3,7 @@ module.exports = {
   questionID: 50426133,
   shouldOutputHtml: true,
   shouldOutputImages: true,
+  outputDir: './output',
   htmlDir: './output/html',
-  imagesDir: './output/images'
+  imageDir: './output/images'
 }
