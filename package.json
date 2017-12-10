@@ -1,0 +1,16 @@
+{
+  "name": "zhihu-image-crawler",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "enzeberg",
+  "license": "MIT",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
+    "pug": "^2.0.0-rc.4"
+  }
+}
